@@ -1,0 +1,14 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <form method="POST" action="send" enctype="multipart/form-data">
+      <input type="file" name="img_file">
+      <input type="submit">
+    </form>
+
+    {% if img_url %}
+    <img src="{{ img_url }}">
+    {% endif %}
+  </body>
+</html>
