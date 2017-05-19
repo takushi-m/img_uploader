@@ -7,8 +7,14 @@
       <input type="submit">
     </form>
 
-    {% if img_url %}
-    <img src="{{ img_url }}">
+    {% if imgs %}
+    <ul>
+      {% for img in imgs %}
+      <li>
+	<img src="{{img}}" height="100">
+      </li>
+      {% endfor %}
+    </ul>
     {% endif %}
   </body>
 </html>

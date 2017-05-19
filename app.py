@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    files = ["/static/"+file for file in os.listdir("./static") if file!=".gitignore"];
+    return render_template("index.html", imgs=files)
 
 @app.route("/send", methods=["GET","POST"])
 def send():
@@ -13,9 +14,8 @@ def send():
         img_file = request.files["img_file"]
         filename = secure_filename(img_file.filename)
         img_file.save(os.path.join("./static", filename))
-        return render_template("index.html", img_url="/static/"+filename)
-    else:
-        return redirect(url_for("index"))
+
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
